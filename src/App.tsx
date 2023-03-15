@@ -5,6 +5,8 @@ import { useAppDispatch, useAppSelector } from './app/hooks'
 import Countries from './components/Countries'
 import { CountryT } from './types/CountryTypes'
 import { fetchCountries} from './redux/countries/countriesSlice'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Detail from './pages/Detail'
 
 // interface CountriesProps {
 //     countries:CountryT[]
@@ -24,9 +26,13 @@ console.log(countries);
 
   return (
     <div>
-      {/* <Counter /> */}
-      <h1>Countries</h1>
-      <Countries />
+      <BrowserRouter>
+      {/* <Navbar /> */}
+      <Routes>
+        <Route path='/' element={<Countries />}/>
+        <Route path='/detail' element={<Detail />} />
+      </Routes>
+      </BrowserRouter>
     </div>
   )
 }
