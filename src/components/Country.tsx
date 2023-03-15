@@ -5,10 +5,10 @@ type CountryProps = {
     country : CountryT
 }
 
-function Country({Country}:CountryProps) {
+function Country() {
   return (
     <div>
-        <p>{Country.area}</p>
+        
         </div>
   )
 }
