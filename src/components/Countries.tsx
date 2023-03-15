@@ -2,12 +2,13 @@ import React from 'react'
 import { useAppSelector} from '../app/hooks'
 import { CountryT } from '../types/CountryTypes'
 import Country from './Country'
+// import { v4 as uuidv4 } from 'uuid'
 
 
-// interface CountriesProps {
-//     countries:CountryT[]
-//    data:CountryT[]
-// }
+interface CountriesProps {
+    countries:CountryT[]
+   data:CountryT[]
+}
 
 function Countries () {
   const {countries} = useAppSelector((state)=> state.countriesR)
@@ -17,8 +18,14 @@ function Countries () {
     <td><img src={data.flags.svg} alt='' style={{width:'40px'}} /></td>
     <td>{data.name.common}</td>
     <td>{data.region}</td>
-    <td>{data.population}</td>
+    <td>{data.population.toLocaleString() }</td>
     {/* <td>{data.languages}</td> */}
+    {data.languages && <ul>
+           {(Object.values(data.languages)).map((language, index:number)=>
+          <li key={index}>{language}</li>
+          )}
+         </ul>}
+    
 
 
     <td><button className='' >Bookmark</button></td>
@@ -41,7 +48,7 @@ function Countries () {
                  <th>name</th>
                  <th>region</th>
                  <th>population</th>
-                 {/* <th>language</th> */}
+                 <th>language</th>
               </tr>
             </thead>
             <tbody>

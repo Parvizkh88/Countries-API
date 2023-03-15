@@ -3,6 +3,7 @@ export interface CountryT {
     // readonly cca3: string;
     readonly flags: { png: string; svg: string };
     readonly languages: { [key: string]: string };
+    
     readonly name: {
       common: string;
       // official: string;
