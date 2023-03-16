@@ -31,6 +31,7 @@ console.log(countries);
       <Routes>
         <Route path='/' element={<Countries />}/>
         <Route path='/detail' element={<Detail />} />
+        <Route path='/:region' element={<Detail />} />
       </Routes>
       </BrowserRouter>
     </div>

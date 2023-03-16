@@ -2,9 +2,12 @@ import React from 'react'
 import axios from 'axios';
 import { useState, useEffect } from 'react'
 import { useAppSelector} from '../app/hooks'
+import { useNavigate } from 'react-router-dom';
 
 import { CountryT } from '../types/CountryTypes'
 import Country from './Country'
+import { Link } from 'react-router-dom';
+import { set } from 'immer/dist/internal';
 // import { v4 as uuidv4 } from 'uuid'
 
 interface CountriesProps {
@@ -14,13 +17,17 @@ interface CountriesProps {
 
 function Countries () {
   const {countries} = useAppSelector((state)=> state.countriesR)
-
+const navigate = useNavigate()
 
   //  const [cities, setCities] = useState([]);
   // const [draft, setDraft] = useState('London');
+   const [region, setRegion] = useState('Africa');
+   
 
-const handleDetail = (xx:string)=> {
-     console.log(xx)
+const handleDetail = ()=> {
+    //  console.log(xx)
+    navigate('/detail')
+    // setRegion(xx)
   }
 
   // async function fetchData() {
@@ -53,7 +60,9 @@ const handleDetail = (xx:string)=> {
     
     <td><button>Bookmark</button></td>
     {/* <td><button className=‘’ onClick={(event: string) => {deleteHandler}}>Delete</button></td> */}
-    <td><button onClick={()=>handleDetail(data.region)}>More</button></td>
+     <Link to={data.region} state={data.name.common}> 
+    <button onClick={handleDetail}>More</button>
+    </Link>
  </tr>
   ))
   return (
