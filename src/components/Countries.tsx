@@ -47,8 +47,8 @@ const handleDetail = ()=> {
     <tr key={index}>
     {/* <td>{index}</td> */}
     <td><img src={data.flags.svg} alt='' style={{width:'40px'}} /></td>
-    <Link to={`/${data.name.common}`}>
-    <td>{data.name.common}</td>
+    <Link to={`/${data.name.official}`}>
+    <td>{data.name.official}</td>
     </Link>
         <td>{data.region}</td>
     <td>{data.population.toLocaleString() }</td>
@@ -61,7 +61,7 @@ const handleDetail = ()=> {
     
     <td><button>Bookmark</button></td>
     {/* <td><button className=‘’ onClick={(event: string) => {deleteHandler}}>Delete</button></td> */}
-     <Link to={data.name.common} state={data.name.common}> 
+     <Link to={data.name.official} state={data.name.official}> 
     <button onClick={handleDetail}>More</button>
     </Link>
  </tr>

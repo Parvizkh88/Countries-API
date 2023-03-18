@@ -26,7 +26,7 @@ const fetchCountries = createAsyncThunk( 'countries/fetchCountries',
 // search to direct to detail page ---------------------------
 const searchByName = createAsyncThunk( 'countries/searchByName',
  async (name, thunkAPI) => {
-    let response = await axios.get(`https://restcountries.com/v3.1/name/{name}?fullText=true`) 
+    let response = await axios.get(`https://restcountries.com/v3.1/name/${name}?fullText=true`) 
        let data:CountryT[]= await response.data
     return data
   }

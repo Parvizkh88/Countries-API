@@ -6,6 +6,7 @@ export interface CountryT {
     
     readonly name: {
       common: string;
+      official:string
       // official: string;
       // nativeName: { [key: string]: { official: string; common: string } };
     };

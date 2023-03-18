@@ -12,13 +12,19 @@ const Detail = () => {
 const {countries, isError, message, isLoading, countrySearched} =
  useAppSelector((state)=> state.countriesR);
 const dispatch = useAppDispatch();
-const {name} = useParams();
+type NameParams = {
+  name: string;
+};
+const {name} = useParams<NameParams>();
 
 
 
 useEffect(()=>{
    dispatch(searchByName(name))
   }, [dispatch, name])
+
+
+
 // Trying to receive states in the detail page ----------
 // const {region } = useParams() 
 // console.log(params);
@@ -38,7 +44,7 @@ useEffect(()=>{
 
   return (
     <div>
-      
+      <h1>detail page</h1>
       {/* <h1>{region}</h1> */}
       {/* <h2>{name.common}</h2> */}
     
