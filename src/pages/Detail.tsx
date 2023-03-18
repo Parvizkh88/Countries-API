@@ -1,16 +1,30 @@
-import { useLocation, useParams } from "react-router"
-import { useAppSelector } from "../app/hooks"
-
-
+import { useLocation } from "react-router"
+import { useAppDispatch, useAppSelector } from "../app/hooks"
+import { useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import {searchByName} from '../redux/countries/countriesSlice'
+import Countries from "../components/Countries"
+import { CountriesState } from "../types/CountryTypes"
 
 const Detail = () => {
  
-const {countries} = useAppSelector((state)=> state.countriesR)
-const {region } = useParams() 
-// console.log(params);
-const location = useLocation()
-console.log(location.state);
+const {countries, isError, message, isLoading, countrySearched} =
+ useAppSelector((state)=> state.countriesR);
+const dispatch = useAppDispatch();
+const {name} = useParams();
 
+
+
+useEffect(()=>{
+   dispatch(searchByName(name))
+  }, [dispatch, name])
+// Trying to receive states in the detail page ----------
+// const {region } = useParams() 
+// console.log(params);
+// const location = useLocation()
+// console.log(location.state);
+// ---------------------------------------
 
 //  const allCountries =  countries.map((data,index:number) => (
 //     <tr key={index}>
@@ -24,7 +38,8 @@ console.log(location.state);
 
   return (
     <div>
-      <h1>{region}</h1>
+      
+      {/* <h1>{region}</h1> */}
       {/* <h2>{name.common}</h2> */}
     
 {/* <p>{allCountries}</p> */}

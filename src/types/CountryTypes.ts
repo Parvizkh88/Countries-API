@@ -16,6 +16,7 @@ export interface CountryT {
 
    export interface CountriesState {
        countries:CountryT[]
+       countrySearched:CountryT[]
        isLoading:boolean
        isError: boolean
        message:string

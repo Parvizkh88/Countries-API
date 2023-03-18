@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { CountryT } from '../types/CountryTypes'
 import Country from './Country'
 import { Link } from 'react-router-dom';
-import { set } from 'immer/dist/internal';
 // import { v4 as uuidv4 } from 'uuid'
 
 interface CountriesProps {
@@ -48,8 +47,10 @@ const handleDetail = ()=> {
     <tr key={index}>
     {/* <td>{index}</td> */}
     <td><img src={data.flags.svg} alt='' style={{width:'40px'}} /></td>
+    <Link to={`/${data.name.common}`}>
     <td>{data.name.common}</td>
-    <td>{data.region}</td>
+    </Link>
+        <td>{data.region}</td>
     <td>{data.population.toLocaleString() }</td>
     {/* <td>{data.languages}</td> */}
     {data.languages && <ul>
@@ -60,7 +61,7 @@ const handleDetail = ()=> {
     
     <td><button>Bookmark</button></td>
     {/* <td><button className=‘’ onClick={(event: string) => {deleteHandler}}>Delete</button></td> */}
-     <Link to={data.region} state={data.name.common}> 
+     <Link to={data.name.common} state={data.name.common}> 
     <button onClick={handleDetail}>More</button>
     </Link>
  </tr>

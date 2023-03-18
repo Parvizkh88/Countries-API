@@ -22,7 +22,7 @@ useEffect(() => {
   dispatch(fetchCountries())
      }, [dispatch])
 
-console.log(countries);
+// console.log(countries);
 
   return (
     <div>
