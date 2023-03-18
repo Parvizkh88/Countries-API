@@ -7,7 +7,8 @@ import { CountryT } from './types/CountryTypes'
 import { fetchCountries} from './redux/countries/countriesSlice'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Detail from './pages/Detail'
-// import Navbar from './components/Navbar'
+import Navbar from './components/Navbar'
+import Favorites from './pages/Favorites'
 
 // interface CountriesProps {
 //     countries:CountryT[]
@@ -28,11 +29,12 @@ useEffect(() => {
   return (
     <div>
       <BrowserRouter>
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
         <Route path='/' element={<Countries />}/>
         <Route path='/detail' element={<Detail />} />
         <Route path='/:region' element={<Detail />} />
+        <Route path='/favorites' element={<Favorites />} />
       </Routes>
       </BrowserRouter>
     </div>

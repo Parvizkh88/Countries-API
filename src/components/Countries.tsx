@@ -78,6 +78,7 @@ const handleDetail = ()=> {
               <tr>
                 {/* <td>number </td>
                  <td>flags</td> */}
+                 <th>flag</th>
                  <th>name</th>
                  <th>region</th>
                  <th>population</th>

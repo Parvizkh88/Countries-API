@@ -8,22 +8,22 @@ import Countries from "../components/Countries"
 import { CountriesState } from "../types/CountryTypes"
 
 const Detail = () => {
- 
-const {countries, isError, message, isLoading, countrySearched} =
- useAppSelector((state)=> state.countriesR);
-const dispatch = useAppDispatch();
-type NameParams = {
-  name: string;
-};
-const {name} = useParams<NameParams>();
+ // Error starts here --------------
+// const {countries, isError, message, isLoading, countrySearched} =
+//  useAppSelector((state)=> state.countriesR);
+// const dispatch = useAppDispatch();
+// type NameParams = {
+//   name: string;
+// };
+// const {name} = useParams<NameParams>();
 
 
 
-useEffect(()=>{
-   dispatch(searchByName(name))
-  }, [dispatch, name])
+// useEffect(()=>{
+//    dispatch(searchByName(name))
+//   }, [dispatch, name])
 
-
+ // Error finishes here --------------
 
 // Trying to receive states in the detail page ----------
 // const {region } = useParams() 
