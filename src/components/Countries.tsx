@@ -1,23 +1,35 @@
 import React from 'react'
 import axios from 'axios';
 import { useState, useEffect } from 'react'
-import { useAppSelector} from '../app/hooks'
-import { useNavigate } from 'react-router-dom';
 
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector} from '../app/hooks'
 import { CountryT } from '../types/CountryTypes'
 import Country from './Country'
+ import { addToFavorites } from '../redux/countries/favoriteSlice';
 import { Link } from 'react-router-dom';
 // import { v4 as uuidv4 } from 'uuid'
 
-interface CountriesProps {
+type CountriesProps = {
     countries:CountryT[]
    data:CountryT[]
+    readonly flags: { png: string; svg: string };
+    readonly languages: { [key: string]: string };
+        readonly name: {
+      common: string;
+      official:string
+          };
+    readonly population: number;
+    readonly region: string;
 }
 
 function Countries () {
   const {countries} = useAppSelector((state)=> state.countriesR)
 const navigate = useNavigate()
-
+ const dispatch = useAppDispatch();
+const handleAddToFavorites = (data:CountriesProps)=>{
+    dispatch(addToFavorites(data));
+    };
   //  const [cities, setCities] = useState([]);
   // const [draft, setDraft] = useState('London');
    const [region, setRegion] = useState('Africa');
@@ -42,8 +54,10 @@ const handleDetail = ()=> {
   //   fetchData();
   // })
 
-
-  const allCountries =  countries.map((data,index:number) => (
+ 
+  const allCountries =  countries?.map((data,index:number) => {
+    
+    return(
     <tr key={index}>
     {/* <td>{index}</td> */}
     <td><img src={data.flags.svg} alt='' style={{width:'40px'}} /></td>
@@ -59,13 +73,13 @@ const handleDetail = ()=> {
           )}
          </ul>}
     
-    <td><button>Bookmark</button></td>
+    <td><button onClick={()=>handleAddToFavorites(data) }>Bookmark</button></td>
     {/* <td><button className=‘’ onClick={(event: string) => {deleteHandler}}>Delete</button></td> */}
      <Link to={data.name.official} state={data.name.official}> 
     <button onClick={handleDetail}>More</button>
     </Link>
- </tr>
-  ))
+ </tr>)
+  })
   return (
     <div className='container'>
             Search Country
@@ -78,7 +92,6 @@ const handleDetail = ()=> {
               <tr>
                 {/* <td>number </td>
                  <td>flags</td> */}
-                 <th>flag</th>
                  <th>name</th>
                  <th>region</th>
                  <th>population</th>
@@ -95,5 +108,4 @@ const handleDetail = ()=> {
 }
 
 export default Countries
-
 

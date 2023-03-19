@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Detail from './pages/Detail'
 import Navbar from './components/Navbar'
 import Favorites from './pages/Favorites'
+// import Footer from './components/Footer'
 
 // interface CountriesProps {
 //     countries:CountryT[]
@@ -32,10 +33,11 @@ useEffect(() => {
       <Navbar />
       <Routes>
         <Route path='/' element={<Countries />}/>
-        <Route path='/detail' element={<Detail />} />
-        <Route path='/:region' element={<Detail />} />
+        {/* <Route path='/detail' element={<Detail />} /> */}
+        <Route path='/:official' element={<Detail />} />
         <Route path='/favorites' element={<Favorites />} />
       </Routes>
+      {/* <Footer /> */}
       </BrowserRouter>
     </div>
   )

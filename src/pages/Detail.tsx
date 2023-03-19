@@ -8,7 +8,7 @@ import Countries from "../components/Countries"
 import { CountriesState } from "../types/CountryTypes"
 
 const Detail = () => {
- // Error starts here --------------
+ 
 // const {countries, isError, message, isLoading, countrySearched} =
 //  useAppSelector((state)=> state.countriesR);
 // const dispatch = useAppDispatch();
@@ -23,7 +23,7 @@ const Detail = () => {
 //    dispatch(searchByName(name))
 //   }, [dispatch, name])
 
- // Error finishes here --------------
+
 
 // Trying to receive states in the detail page ----------
 // const {region } = useParams() 
