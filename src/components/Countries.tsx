@@ -25,10 +25,11 @@ type CountriesProps = {
 
 function Countries () {
   const {countries} = useAppSelector((state)=> state.countriesR)
-const navigate = useNavigate()
+// const navigate = useNavigate()
  const dispatch = useAppDispatch();
 const handleAddToFavorites = (data:CountriesProps)=>{
     dispatch(addToFavorites(data));
+    //  navigate('/favorites')
     };
   //  const [cities, setCities] = useState([]);
   // const [draft, setDraft] = useState('London');
@@ -37,7 +38,7 @@ const handleAddToFavorites = (data:CountriesProps)=>{
 
 const handleDetail = ()=> {
     //  console.log(xx)
-    navigate('/detail')
+    // navigate('/detail')
     // setRegion(xx)
   }
 
@@ -72,9 +73,11 @@ const handleDetail = ()=> {
           <li key={index}>{language}</li>
           )}
          </ul>}
-    
-    <td><button onClick={()=>handleAddToFavorites(data) }>Bookmark</button></td>
-    {/* <td><button className=‘’ onClick={(event: string) => {deleteHandler}}>Delete</button></td> */}
+    <Link to='/favorites' 
+    state={{theCountryName:data.name.official, theCountryRegion: data.region}}> 
+     <td><button onClick={()=>handleAddToFavorites(data) }>Bookmark</button></td>
+    </Link>
+       {/* <td><button className=‘’ onClick={(event: string) => {deleteHandler}}>Delete</button></td> */}
      <Link to={data.name.official} state={data.name.official}> 
     <button onClick={handleDetail}>More</button>
     </Link>
