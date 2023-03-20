@@ -41,7 +41,7 @@ useEffect(()=>{
 
   return (
     <div>
-      <h1>detail page</h1>
+      <h1>detail pageee</h1>
      <h3>{countrySearched[0].region}</h3>
       {/* <h2>{name.common}</h2> */}
     

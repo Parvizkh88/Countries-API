@@ -85,16 +85,11 @@ const handleDetail = ()=> {
   })
   return (
     <div className='container'>
-            Search Country
-            <div>
-            <input type='search' placeholder='Search' />
-            </div>
-            <div>
+                       <div>
           <table>
             <thead>
-              <tr>
-                {/* <td>number </td>
-                 <td>flags</td> */}
+              <tr className='table-row'>             
+                 <th>flags</th> 
                  <th>name</th>
                  <th>region</th>
                  <th>population</th>

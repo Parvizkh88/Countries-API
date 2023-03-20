@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 // import { Counter } from './components/Counter'
 import './App.css'
 import { useAppDispatch, useAppSelector } from './app/hooks'
@@ -7,8 +9,8 @@ import { CountryT } from './types/CountryTypes'
 import { fetchCountries} from './redux/countries/countriesSlice'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Detail from './pages/Detail'
-import Navbar from './components/Navbar'
 import Favorites from './pages/Favorites'
+import MyNavbar from './components/MyNavbar';
 // import Footer from './components/Footer'
 
 // interface CountriesProps {
@@ -30,7 +32,7 @@ useEffect(() => {
   return (
     <div>
       <BrowserRouter>
-      <Navbar />
+      <MyNavbar />
       <Routes>
         <Route path='/' element={<Countries />}/>
         {/* <Route path='/detail' element={<Detail />} /> */}
