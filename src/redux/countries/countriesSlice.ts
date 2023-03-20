@@ -25,7 +25,7 @@ const fetchCountries = createAsyncThunk( 'countries/fetchCountries',
 
 // search to direct to detail page ---------------------------
 const searchByName = createAsyncThunk( 'countries/searchByName',
- async (name, thunkAPI) => {
+ async (name:string|undefined, thunkAPI) => {
     let response = await axios.get(`https://restcountries.com/v3.1/name/${name}?fullText=true`) 
        let data:CountryT[]= await response.data
     return data
@@ -38,6 +38,12 @@ const searchByName = createAsyncThunk( 'countries/searchByName',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
+    search:(state, action:PayloadAction<string>)=>{
+      let search = action.payload
+state.countries = state.countries.filter((country)=>
+country.name.official.toLowerCase().includes(search.toLowerCase())
+)
+    }
       },
  
    extraReducers: (builder) => {
@@ -63,7 +69,7 @@ const searchByName = createAsyncThunk( 'countries/searchByName',
       state.countrySearched = action.payload
       state.isLoading = false
       state.isError = false
-      state.message = 'Countriy detail successful'
+      state.message = 'Country detail successful'
     })
       builder.addCase(searchByName.rejected, (state, action) => {
       // state.countries = []

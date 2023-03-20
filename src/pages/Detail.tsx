@@ -9,21 +9,22 @@ import { CountriesState } from "../types/CountryTypes"
 
 const Detail = () => {
  
-// const {countries, isError, message, isLoading, countrySearched} =
-//  useAppSelector((state)=> state.countriesR);
-// const dispatch = useAppDispatch();
-// type NameParams = {
-//   name: string;
-// };
-// const {name} = useParams<NameParams>();
+const {countries, isError, message, isLoading, countrySearched} =
+ useAppSelector((state)=> state.countriesR);
+const dispatch = useAppDispatch();
+type NameParams = {
+  name: string;
+};
+const {name} = useParams<NameParams>();
+// console.log(params);
+// let name = params.official;
+useEffect(()=>{
+   dispatch(searchByName(name))
+  }, [dispatch, name])
 
-
-
-// useEffect(()=>{
-//    dispatch(searchByName(name))
-//   }, [dispatch, name])
-
-
+  // const searchedCountry = useAppSelector((state)=> state.countriesR)
+  console.log(countrySearched);
+  
 
 // Trying to receive states in the detail page ----------
 // const {region } = useParams() 
@@ -38,14 +39,10 @@ const Detail = () => {
 //    </tr>
 //   ))
 
-
-
-
-
   return (
     <div>
       <h1>detail page</h1>
-      {/* <h1>{region}</h1> */}
+     <h3>{countrySearched[0].region}</h3>
       {/* <h2>{name.common}</h2> */}
     
 {/* <p>{allCountries}</p> */}

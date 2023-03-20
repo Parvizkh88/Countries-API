@@ -34,7 +34,7 @@ useEffect(() => {
       <Routes>
         <Route path='/' element={<Countries />}/>
         {/* <Route path='/detail' element={<Detail />} /> */}
-        <Route path='/:official' element={<Detail />} />
+        <Route path='/:name' element={<Detail />} />
         <Route path='/favorites' element={<Favorites />} />
       </Routes>
       {/* <Footer /> */}
