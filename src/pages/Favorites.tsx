@@ -5,8 +5,9 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 
 const Favorites = () => {
-  
+    
   const country = useLocation();
+  // const [state, setState] = useState(country);
   console.log(country);
     return (
      <Card style={{ width: '18rem', marginLeft:'35rem', marginTop:'10rem'}}>

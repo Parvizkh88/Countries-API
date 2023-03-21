@@ -8,7 +8,7 @@ const baseURL = 'https://restcountries.com/v3.1/all'
 
 const initialState :CountriesState ={
    countries:[],
-   countrySearched:[],
+     countrySearched:[],
        isLoading:false,
        isError: false,
        message:''
@@ -66,6 +66,8 @@ country.name.official.toLowerCase().includes(search.toLowerCase())
     // Search by country to direct to detail page builders -----------
       builder.addCase(searchByName.fulfilled, (state, action)=>{
       // state.countries= action.payload
+      console.log(action.payload);
+      
       state.countrySearched = action.payload
       state.isLoading = false
       state.isError = false

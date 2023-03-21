@@ -16,6 +16,7 @@ type NameParams = {
   name: string;
 };
 const {name} = useParams<NameParams>();
+// console.log(name);
 
 useEffect(()=>{
    dispatch(searchByName(name))
@@ -25,8 +26,10 @@ useEffect(()=>{
 
   return (
     <div>
+      {countrySearched && <>
       <h1>detail pageee</h1>
-     <h3>{countrySearched[0].region}</h3>
+     <h3>{countrySearched[0]?.region}</h3>
+      </>}
         </div>
   )
 }
