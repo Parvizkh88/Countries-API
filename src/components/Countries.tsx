@@ -1,5 +1,9 @@
 import React from 'react'
 import axios from 'axios';
+import { FaHeart } from "react-icons/fa";
+import { FaAngleRight } from "react-icons/fa";
+import Table from 'react-bootstrap/Table';
+
 import { useState, useEffect } from 'react'
 
 import { useNavigate } from 'react-router-dom';
@@ -59,7 +63,8 @@ const handleDetail = ()=> {
   const allCountries =  countries?.map((data,index:number) => {
     
     return(
-    <tr key={index}>
+      // <section >
+<tr key={index}>
     {/* <td>{index}</td> */}
     <td><img src={data.flags.svg} alt='' style={{width:'40px'}} /></td>
     <Link to={`/${data.name.official}`}>
@@ -68,29 +73,35 @@ const handleDetail = ()=> {
         <td>{data.region}</td>
     <td>{data.population.toLocaleString() }</td>
     {/* <td>{data.languages}</td> */}
-    {data.languages && <ul>
+    <td>
+{data.languages && <ul>
            {(Object.values(data.languages)).map((language, index:number)=>
           <li key={index}>{language}</li>
           )}
          </ul>}
-    <Link to='/favorites' 
-    state={{theCountryName:data.name.official, theCountryRegion: data.region}}> 
-     <td><button onClick={()=>handleAddToFavorites(data) }>Bookmark</button></td>
+    </td>
+    <section style={{display:'flex', justifyContent:'space-between'}}>
+      <Link to='/favorites' 
+    state={{theCountryName:data.name.official, theCountryRegion: data.region,
+    theCountryFlags:data.flags.svg, theCountryPopulation:data.population.toLocaleString() }}> 
+     <td><FaHeart onClick={()=>handleAddToFavorites(data) }/></td>
     </Link>
        {/* <td><button className=‘’ onClick={(event: string) => {deleteHandler}}>Delete</button></td> */}
      <Link to={data.name.official} state={data.name.official}> 
-    <button onClick={handleDetail}>More</button>
-    </Link>
- </tr>)
+     <td><FaAngleRight  onClick={handleDetail} /></td>
+        </Link>
+    </section>
+   </tr>
+      // </section>
+     )
   })
   return (
-    <div className='container'>
-                       <div>
-          <table>
+   
+       <table style={{width:'90vw', marginLeft:'1rem'}}>
             <thead>
-              <tr className='table-row'>             
-                 <th>flags</th> 
-                 <th>name</th>
+              <tr  >             
+                 <th style={{paddingRight:'2rem'}}>flags</th> 
+                 <th >names</th>
                  <th>region</th>
                  <th>population</th>
                  <th>language</th>
@@ -100,9 +111,7 @@ const handleDetail = ()=> {
               {allCountries}
             </tbody>
           </table>
-        </div>
-      </div>
-  )
+               )
 }
 
 export default Countries

@@ -16,37 +16,18 @@ type NameParams = {
   name: string;
 };
 const {name} = useParams<NameParams>();
-// console.log(params);
-// let name = params.official;
+
 useEffect(()=>{
    dispatch(searchByName(name))
   }, [dispatch, name])
 
-  // const searchedCountry = useAppSelector((state)=> state.countriesR)
   console.log(countrySearched);
-  
-
-// Trying to receive states in the detail page ----------
-// const {region } = useParams() 
-// console.log(params);
-// const location = useLocation()
-// console.log(location.state);
-// ---------------------------------------
-
-//  const allCountries =  countries.map((data,index:number) => (
-//     <tr key={index}>
-//       <td>{data.name.common}</td>
-//    </tr>
-//   ))
 
   return (
     <div>
       <h1>detail pageee</h1>
      <h3>{countrySearched[0].region}</h3>
-      {/* <h2>{name.common}</h2> */}
-    
-{/* <p>{allCountries}</p> */}
-    </div>
+        </div>
   )
 }
 

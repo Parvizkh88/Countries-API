@@ -22,3 +22,7 @@
 /* .isActive {
   background-color: green;
 } */
+.countryDetailCard {
+  display: flex;
+  flex-direction: column;
+}

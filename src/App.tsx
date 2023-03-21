@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Detail from './pages/Detail'
 import Favorites from './pages/Favorites'
 import MyNavbar from './components/MyNavbar';
+
 // import Footer from './components/Footer'
 
 // interface CountriesProps {
@@ -33,9 +34,9 @@ useEffect(() => {
     <div>
       <BrowserRouter>
       <MyNavbar />
+    
       <Routes>
         <Route path='/' element={<Countries />}/>
-        {/* <Route path='/detail' element={<Detail />} /> */}
         <Route path='/:name' element={<Detail />} />
         <Route path='/favorites' element={<Favorites />} />
       </Routes>
