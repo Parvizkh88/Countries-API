@@ -29,7 +29,7 @@ type CountriesProps = {
 
 function Countries () {
   const {countries} = useAppSelector((state)=> state.countriesR)
-// const navigate = useNavigate()
+//  const navigate = useNavigate()
  const dispatch = useAppDispatch();
 const handleAddToFavorites = (data:CountriesProps)=>{
     dispatch(addToFavorites(data));
@@ -40,11 +40,11 @@ const handleAddToFavorites = (data:CountriesProps)=>{
    const [region, setRegion] = useState('Africa');
    
 
-const handleDetail = ()=> {
+// const handleDetail = ()=> {
     //  console.log(xx)
     // navigate('/detail')
     // setRegion(xx)
-  }
+  // }
 
   // async function fetchData() {
   //   try {
@@ -88,7 +88,7 @@ const handleDetail = ()=> {
     </Link>
        {/* <td><button className=‘’ onClick={(event: string) => {deleteHandler}}>Delete</button></td> */}
      <Link to={data.name.official} state={data.name.official}> 
-     <td><FaAngleRight  onClick={handleDetail} /></td>
+     <td><FaAngleRight /></td>
         </Link>
     </section>
    </tr>

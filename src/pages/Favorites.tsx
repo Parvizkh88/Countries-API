@@ -1,24 +1,33 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router'
-// import {CountryT} from '../types/CountryTypes'
-
+import { FaAngleLeft } from "react-icons/fa";
+import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 const Favorites = () => {
   
   const country = useLocation();
   console.log(country);
     return (
-    <div className='countryDetailCard'>
-      <h1>These are favorites</h1>
-      <img style={{width:'200px'}} src={country.state.theCountryFlags}/>
-      <h2>{country.state.theCountryName}</h2>
-      <h2>{country.state.theCountryRegion}</h2>
-      <h2>{country.state.theCountryPopulation}</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-         Alias eum laudantium saepe suscipit facilis omnis cupiditate
-         voluptates distinctio excepturi earum!</p>
-      </div>
+     <Card style={{ width: '18rem', marginLeft:'35rem', marginTop:'10rem'}}>
+      <Card.Img variant="top" src={country.state.theCountryFlags} />
+      <Card.Body>
+        <Card.Title>{country.state.theCountryName}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{country.state.theCountryRegion}</Card.Subtitle>
+        <Card.Text>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </Card.Text>
+        <Link to='/'>
+       <FaAngleLeft /> 
+        </Link>
+             </Card.Body>
+    </Card>
   )
 }
 
 export default Favorites
+
+
+
+
