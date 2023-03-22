@@ -91,4 +91,3 @@ const handleAddToFavorites = (data:CountriesProps)=>{
 }
 
 export default Countries
-
