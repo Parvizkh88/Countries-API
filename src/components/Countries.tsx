@@ -33,33 +33,9 @@ function Countries () {
  const dispatch = useAppDispatch();
 const handleAddToFavorites = (data:CountriesProps)=>{
     dispatch(addToFavorites(data));
-    //  navigate('/favorites')
+            //  navigate('/favorites')
     };
-  //  const [cities, setCities] = useState([]);
-  // const [draft, setDraft] = useState('London');
-   const [region, setRegion] = useState('Africa');
-   
-
-// const handleDetail = ()=> {
-    //  console.log(xx)
-    // navigate('/detail')
-    // setRegion(xx)
-  // }
-
-  // async function fetchData() {
-  //   try {
-  //     const response = await axios.get(`https://restcountries.com/v3.1/name/${name}`)
-  //     setCities(response.data)
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   fetchData();
-  // })
-
- 
+  
   const allCountries =  countries?.map((data,index:number) => {
     
     return(

@@ -8,6 +8,7 @@ const baseURL = 'https://restcountries.com/v3.1/all'
 
 const initialState :CountriesState ={
    countries:[],
+   favorites:[],
      countrySearched:[],
        isLoading:false,
        isError: false,
@@ -38,6 +39,9 @@ const searchByName = createAsyncThunk( 'countries/searchByName',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
+    addToFavorites: (state, action: PayloadAction<CountryT>) => {
+      state.favorites.push(action.payload);
+    },
     search:(state, action:PayloadAction<string>)=>{
       let search = action.payload
 state.countries = state.countries.filter((country)=>
