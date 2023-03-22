@@ -10,6 +10,7 @@ const initialState :CountriesState ={
    countries:[],
    favorites:[],
      countrySearched:[],
+    //  homeSearch:[],
        isLoading:false,
        isError: false,
        message:''
@@ -31,7 +32,14 @@ const searchByName = createAsyncThunk( 'countries/searchByName',
        let data:CountryT[]= await response.data
     return data
   }
-)
+);
+// const searchByCode = createAsyncThunk('countries/searchByCode', 
+// async(code, thunkAPI)=>{
+//   let response = await axios.get(`https://restcountries.com/v3.1/alpha/${code}`)
+//   let data = await response.data
+//   return data
+// }
+// );
 
 
  const countriesSlice = createSlice({
@@ -39,15 +47,28 @@ const searchByName = createAsyncThunk( 'countries/searchByName',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
+    // addToFavorites: (state, action: PayloadAction<CountryT>) => {
+    //   const existingCountry = state.favorites.find(
+    //     (country)=> country.name.common === action.payload.name.common
+
+    //   )
+    //   state.favorites.push(action.payload);
+    // },
     addToFavorites: (state, action: PayloadAction<CountryT>) => {
-      state.favorites.push(action.payload);
+      const existingCountry = state.favorites.find(
+        (country) => country.name.common === action.payload.name.common
+      );
+      if (!existingCountry) {
+        state.favorites.push(action.payload);
+      }
     },
-    search:(state, action:PayloadAction<string>)=>{
-      let search = action.payload
-state.countries = state.countries.filter((country)=>
-country.name.official.toLowerCase().includes(search.toLowerCase())
-)
-    }
+
+//     search:(state, action:PayloadAction<string>)=>{
+//       let search = action.payload
+// state.countries = state.countries.filter((country)=>
+// country.name.official.toLowerCase().includes(search.toLowerCase())
+// )
+//     }
       },
  
    extraReducers: (builder) => {
@@ -88,9 +109,11 @@ country.name.official.toLowerCase().includes(search.toLowerCase())
       state.isLoading = true
       state.message = 'Loading...'
     })
+
   },
 })
 
 
 export  { fetchCountries, searchByName } 
+export const {addToFavorites} = countriesSlice.actions;
 export default countriesSlice.reducer

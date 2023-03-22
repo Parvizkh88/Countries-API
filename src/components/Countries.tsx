@@ -10,7 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector} from '../app/hooks'
 import { CountryT } from '../types/CountryTypes'
 import Country from './Country'
- import { addToFavorites } from '../redux/countries/favoriteSlice';
+//  import { addToFavorites } from '../redux/countries/favoriteSlice';
+ import { addToFavorites } from '../redux/countries/countriesSlice'
 import { Link } from 'react-router-dom';
 // import { v4 as uuidv4 } from 'uuid'
 

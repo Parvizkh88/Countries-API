@@ -46,7 +46,6 @@ const Favorites = () => {
         </Link>
              </Card.Body>
     </Card>
-
     )
   })
 
