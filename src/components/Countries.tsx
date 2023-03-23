@@ -61,11 +61,12 @@ searchedItem.name.common.toLowerCase().includes(searchInput));
          </ul>}
     </td>
     <section style={{display:'flex', justifyContent:'space-between'}}>
-      <Link to='/favorites' 
-    state={{theCountryName:data.name.official, theCountryRegion: data.region,
+      <Link to='/' 
+        state={{theCountryName:data.name.official, theCountryRegion: data.region,
     theCountryFlags:data.flags.svg, theCountryPopulation:data.population.toLocaleString() }}> 
      <td><FaHeart onClick={()=>handleAddToFavorites(data) }/></td>
     </Link>
+   
        {/* <td><button className=‘’ onClick={(event: string) => {deleteHandler}}>Delete</button></td> */}
      <Link to={data.name.official} state={data.name.official}> 
      <td><FaAngleRight /></td>

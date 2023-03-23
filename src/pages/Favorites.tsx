@@ -23,7 +23,7 @@ const Favorites = () => {
     readonly region: string;
 }
 
-  const country = useLocation();
+  // const country = useLocation();
   // const [state, setState] = useState(country);
   // console.log(country);
 
