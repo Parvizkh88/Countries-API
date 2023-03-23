@@ -29,7 +29,7 @@ type CountriesProps = {
 }
 
 function Countries () {
-  const {countries} = useAppSelector((state)=> state.countriesR)
+  const {countries, searchInput} = useAppSelector((state)=> state.countriesR)
 //  const navigate = useNavigate()
  const dispatch = useAppDispatch();
 const handleAddToFavorites = (data:CountriesProps)=>{
@@ -37,7 +37,10 @@ const handleAddToFavorites = (data:CountriesProps)=>{
             //  navigate('/favorites')
     };
   
-  const allCountries =  countries?.map((data,index:number) => {
+const searchedData = countries.filter((searchedItem)=>
+searchedItem.name.common.toLowerCase().includes(searchInput));
+
+  const allCountries =  searchedData?.map((data,index:number) => {
     
     return(
       // <section >
