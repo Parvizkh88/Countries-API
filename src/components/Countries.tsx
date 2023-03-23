@@ -1,5 +1,8 @@
 import React from 'react'
 import axios from 'axios';
+ import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
 import { FaHeart } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
 import Table from 'react-bootstrap/Table';
@@ -34,8 +37,8 @@ function Countries () {
  const dispatch = useAppDispatch();
 const handleAddToFavorites = (data:CountriesProps)=>{
     dispatch(addToFavorites(data));
-            //  navigate('/favorites')
-    };
+    toast('Country added to favorites')
+        };
   
 const searchedData = countries.filter((searchedItem)=>
 searchedItem.name.common.toLowerCase().includes(searchInput));
@@ -44,6 +47,7 @@ searchedItem.name.common.toLowerCase().includes(searchInput));
     
     return(
       // <section >
+     
 <tr key={index}>
     {/* <td>{index}</td> */}
     <td><img src={data.flags.svg} alt='' style={{width:'40px'}} /></td>
@@ -77,7 +81,8 @@ searchedItem.name.common.toLowerCase().includes(searchInput));
      )
   })
   return (
-   
+    <div>
+<ToastContainer />
        <table style={{width:'90vw', marginLeft:'1rem'}}>
             <thead>
               <tr  >             
@@ -92,6 +97,8 @@ searchedItem.name.common.toLowerCase().includes(searchInput));
               {allCountries}
             </tbody>
           </table>
+    </div>
+    
                )
 }
 
