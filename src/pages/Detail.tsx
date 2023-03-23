@@ -2,6 +2,8 @@ import { useLocation } from "react-router"
 import { useAppDispatch, useAppSelector } from "../app/hooks"
 import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import Card from 'react-bootstrap/Card';
+import { FaAngleLeft } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux'
 import {searchByName} from '../redux/countries/countriesSlice'
 import Countries from "../components/Countries"
@@ -26,12 +28,25 @@ useEffect(()=>{
 
   return (
     <div>
-      {countrySearched && <>
-      <h1>detail page</h1>
-     <h3>{countrySearched[0]?.region}</h3>
-      </>}
-        </div>
-  )
+      {countrySearched && <> 
+        <h1>detail page</h1>
+        <Card style={{ width: '18rem', marginLeft:'35rem', marginTop:'10rem'}}>
+      <Card.Img variant="top" src={countrySearched[0]?.flags.svg} />
+      <Card.Body>
+        <Card.Title>{countrySearched[0]?.name.official}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{countrySearched[0]?.region}</Card.Subtitle>
+        <Card.Text>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </Card.Text>
+        <Link to='/'>
+       <FaAngleLeft /> 
+        </Link>
+             </Card.Body>
+    </Card>
+  </>}
+  </div>
+     )
 }
 
 export default Detail
