@@ -16,6 +16,7 @@ export interface CountryT {
        countries:CountryT[]
        favorites:CountryT []
        countrySearched:CountryT[]
+       searchInput:string
        isLoading:boolean
        isError: boolean
        message:string

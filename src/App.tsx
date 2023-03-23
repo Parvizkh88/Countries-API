@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Detail from './pages/Detail'
 import Favorites from './pages/Favorites'
 import MyNavbar from './components/MyNavbar';
+import SeachComponent from './components/SeachComponent';
 
 // import Footer from './components/Footer'
 
@@ -34,8 +35,8 @@ useEffect(() => {
     <div>
       <BrowserRouter>
       <MyNavbar />
-    
-      <Routes>
+      <SeachComponent />
+          <Routes>
         <Route path='/' element={<Countries />}/>
         <Route path='/:name' element={<Detail />} />
         <Route path='/favorites' element={<Favorites />} />

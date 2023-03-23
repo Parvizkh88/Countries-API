@@ -10,8 +10,8 @@ const initialState :CountriesState ={
    countries:[],
    favorites:[],
      countrySearched:[],
-    //  homeSearch:[],
-       isLoading:false,
+     searchInput:'',
+     isLoading:false,
        isError: false,
        message:''
 }
@@ -62,6 +62,9 @@ const searchByName = createAsyncThunk( 'countries/searchByName',
         state.favorites.push(action.payload);
       }
     },
+    setSearchInput:(state, action)=>{
+      state.searchInput = action.payload
+    }
 
 //     search:(state, action:PayloadAction<string>)=>{
 //       let search = action.payload
@@ -115,5 +118,5 @@ const searchByName = createAsyncThunk( 'countries/searchByName',
 
 
 export  { fetchCountries, searchByName } 
-export const {addToFavorites} = countriesSlice.actions;
+export const {addToFavorites, setSearchInput} = countriesSlice.actions;
 export default countriesSlice.reducer
