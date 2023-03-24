@@ -18,10 +18,11 @@ import Country from './Country'
 import { Link } from 'react-router-dom';
 // import { v4 as uuidv4 } from 'uuid'
 
+
 type CountriesProps = {
     countries:CountryT[]
    data:CountryT[]
-    readonly flags: { png: string; svg: string };
+      readonly flags: { png: string; svg: string };
     readonly languages: { [key: string]: string };
         readonly name: {
       common: string;
@@ -32,19 +33,23 @@ type CountriesProps = {
 }
 
 function Countries () {
+
   const {countries, searchInput} = useAppSelector((state)=> state.countriesR)
 //  const navigate = useNavigate()
  const dispatch = useAppDispatch();
 const handleAddToFavorites = (data:CountriesProps)=>{
     dispatch(addToFavorites(data));
     toast('Country added to favorites')
+// setHeartColor(false)
+
+
         };
   
 const searchedData = countries.filter((searchedItem)=>
 searchedItem.name.common.toLowerCase().includes(searchInput));
 
   const allCountries =  searchedData?.map((data,index:number) => {
-    
+   
     return(
       // <section >
      
@@ -70,9 +75,7 @@ searchedItem.name.common.toLowerCase().includes(searchInput));
     theCountryFlags:data.flags.svg, theCountryPopulation:data.population.toLocaleString() }}> 
      <td><FaHeart onClick={()=>handleAddToFavorites(data) }/></td>
     </Link>
-   
-       {/* <td><button className=‘’ onClick={(event: string) => {deleteHandler}}>Delete</button></td> */}
-     <Link to={data.name.official} state={data.name.official}> 
+       <Link to={data.name.official} state={data.name.official}> 
      <td><FaAngleRight /></td>
         </Link>
     </section>
@@ -87,7 +90,7 @@ searchedItem.name.common.toLowerCase().includes(searchInput));
             <thead>
               <tr  >             
                  <th style={{paddingRight:'2rem'}}>flags</th> 
-                 <th >names</th>
+                 <th>name</th>
                  <th>region</th>
                  <th>population</th>
                  <th>language</th>

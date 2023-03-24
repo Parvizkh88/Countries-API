@@ -10,12 +10,12 @@ export interface CountryT {
     // readonly tld?: string[];
     countries:CountryT[]
     data:CountryT[]
-  }
+      }
 
    export interface CountriesState {
        countries:CountryT[]
        favorites:CountryT []
-       countrySearched:CountryT[]
+              countrySearched:CountryT[]
        searchInput:string
        isLoading:boolean
        isError: boolean
