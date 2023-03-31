@@ -13,6 +13,7 @@ import Favorites from './pages/Favorites'
 import MyNavbar from './components/MyNavbar';
 import SearchComponent from './components/SeachComponent';
 
+
 // import Footer from './components/Footer'
 
 // interface CountriesProps {
@@ -40,7 +41,7 @@ useEffect(() => {
         <Route path='/' element={<Countries />}/>
         <Route path='/:name' element={<Detail />} />
         <Route path='/favorites' element={<Favorites />} />
-      </Routes>
+              </Routes>
       {/* <Footer /> */}
       </BrowserRouter>
     </div>

@@ -30,19 +30,26 @@ type CountriesProps = {
           };
     readonly population: number;
     readonly region: string;
+    
 }
-
+// type FavoriteColor = {
+//   color:boolean;
+// }
+// type Color = {
+//   color: "default" | "red" | "green" | "blue";
+// };
 function Countries () {
 
-  const {countries, searchInput} = useAppSelector((state)=> state.countriesR)
+  const {countries, searchInput, favorites} = useAppSelector((state)=> state.countriesR)
 //  const navigate = useNavigate()
+console.log(favorites);
+
  const dispatch = useAppDispatch();
 const handleAddToFavorites = (data:CountriesProps)=>{
-    dispatch(addToFavorites(data));
+  console.log(data.name.common);
+      dispatch(addToFavorites(data));
     toast('Country added to favorites')
 // setHeartColor(false)
-
-
         };
   
 const searchedData = countries.filter((searchedItem)=>
@@ -73,7 +80,9 @@ searchedItem.name.common.toLowerCase().includes(searchInput));
       <Link to='/' 
         state={{theCountryName:data.name.official, theCountryRegion: data.region,
     theCountryFlags:data.flags.svg, theCountryPopulation:data.population.toLocaleString() }}> 
-     <td><FaHeart onClick={()=>handleAddToFavorites(data) }/></td>
+     <td><FaHeart onClick={()=>handleAddToFavorites(data) }
+      style={{ color: favorites.includes(data) ? 'green': 'default'}}
+      /></td>
     </Link>
        <Link to={data.name.official} state={data.name.official}> 
      <td><FaAngleRight /></td>
