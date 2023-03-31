@@ -14,7 +14,7 @@ import { useAppDispatch, useAppSelector} from '../app/hooks'
 import { CountryT } from '../types/CountryTypes'
 import Country from './Country'
 //  import { addToFavorites } from '../redux/countries/favoriteSlice';
- import { addToFavorites } from '../redux/countries/countriesSlice'
+ import { addToFavorites, removeFromFavorites  } from '../redux/countries/countriesSlice'
 import { Link } from 'react-router-dom';
 // import { v4 as uuidv4 } from 'uuid'
 
@@ -41,17 +41,23 @@ type CountriesProps = {
 function Countries () {
 
   const {countries, searchInput, favorites} = useAppSelector((state)=> state.countriesR)
-//  const navigate = useNavigate()
+  // const [includedFavorites, setIncludedFavorites] = useState(favorites)
+
 console.log(favorites);
+// console.log(includedFavorites);
 
  const dispatch = useAppDispatch();
-const handleAddToFavorites = (data:CountriesProps)=>{
-  console.log(data.name.common);
-      dispatch(addToFavorites(data));
+
+  const handleAddToFavorites = (data: CountriesProps) => {
+  if (favorites.includes(data)) {
+    dispatch(removeFromFavorites(data));
+    toast('Country removed from favorites')
+  } else {
+    dispatch(addToFavorites(data));
     toast('Country added to favorites')
-// setHeartColor(false)
-        };
-  
+  }
+};
+
 const searchedData = countries.filter((searchedItem)=>
 searchedItem.name.common.toLowerCase().includes(searchInput));
 
@@ -81,7 +87,7 @@ searchedItem.name.common.toLowerCase().includes(searchInput));
         state={{theCountryName:data.name.official, theCountryRegion: data.region,
     theCountryFlags:data.flags.svg, theCountryPopulation:data.population.toLocaleString() }}> 
      <td><FaHeart onClick={()=>handleAddToFavorites(data) }
-      style={{ color: favorites.includes(data) ? 'green': 'default'}}
+      style={{ color: favorites.includes(data) ? 'green': '#0d6efd'}}
       /></td>
     </Link>
        <Link to={data.name.official} state={data.name.official}> 

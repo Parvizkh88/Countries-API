@@ -62,6 +62,11 @@ const searchByName = createAsyncThunk( 'countries/searchByName',
         state.favorites.push(action.payload);
       }
     },
+    removeFromFavorites:(state, action:PayloadAction<CountryT>) =>{
+      state.favorites = state.favorites.filter(
+        (country) => country.name.common !== action.payload.name.common
+      ); 
+    },
     setSearchInput:(state, action)=>{
       state.searchInput = action.payload
     }
@@ -118,5 +123,5 @@ const searchByName = createAsyncThunk( 'countries/searchByName',
 
 
 export  { fetchCountries, searchByName } 
-export const {addToFavorites, setSearchInput} = countriesSlice.actions;
+export const {addToFavorites, setSearchInput, removeFromFavorites} = countriesSlice.actions;
 export default countriesSlice.reducer
