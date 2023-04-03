@@ -33,28 +33,12 @@ const searchByName = createAsyncThunk( 'countries/searchByName',
     return data
   }
 );
-// const searchByCode = createAsyncThunk('countries/searchByCode', 
-// async(code, thunkAPI)=>{
-//   let response = await axios.get(`https://restcountries.com/v3.1/alpha/${code}`)
-//   let data = await response.data
-//   return data
-// }
-// );
-
 
  const countriesSlice = createSlice({
   name: 'countries',
   initialState,
-  // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    // addToFavorites: (state, action: PayloadAction<CountryT>) => {
-    //   const existingCountry = state.favorites.find(
-    //     (country)=> country.name.common === action.payload.name.common
-
-    //   )
-    //   state.favorites.push(action.payload);
-    // },
-    addToFavorites: (state, action: PayloadAction<CountryT>) => {
+      addToFavorites: (state, action: PayloadAction<CountryT>) => {
       const existingCountry = state.favorites.find(
         (country) => country.name.common === action.payload.name.common
       );
@@ -70,13 +54,6 @@ const searchByName = createAsyncThunk( 'countries/searchByName',
     setSearchInput:(state, action)=>{
       state.searchInput = action.payload
     }
-
-//     search:(state, action:PayloadAction<string>)=>{
-//       let search = action.payload
-// state.countries = state.countries.filter((country)=>
-// country.name.official.toLowerCase().includes(search.toLowerCase())
-// )
-//     }
       },
  
    extraReducers: (builder) => {
@@ -117,7 +94,6 @@ const searchByName = createAsyncThunk( 'countries/searchByName',
       state.isLoading = true
       state.message = 'Loading...'
     })
-
   },
 })
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
  import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { FaHeart } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
@@ -16,6 +16,7 @@ import Country from './Country'
 //  import { addToFavorites } from '../redux/countries/favoriteSlice';
  import { addToFavorites, removeFromFavorites  } from '../redux/countries/countriesSlice'
 import { Link } from 'react-router-dom';
+import Loading from './Loading';
 // import { v4 as uuidv4 } from 'uuid'
 
 
@@ -30,21 +31,15 @@ type CountriesProps = {
           };
     readonly population: number;
     readonly region: string;
-    
-}
-// type FavoriteColor = {
-//   color:boolean;
-// }
-// type Color = {
-//   color: "default" | "red" | "green" | "blue";
-// };
+   }
+
 function Countries () {
 
-  const {countries, searchInput, favorites} = useAppSelector((state)=> state.countriesR)
+  const {countries, searchInput, favorites, isLoading} = useAppSelector((state)=> state.countriesR)
   // const [includedFavorites, setIncludedFavorites] = useState(favorites)
 
-console.log(favorites);
-// console.log(includedFavorites);
+// console.log(favorites);
+// console.log(isLoading);
 
  const dispatch = useAppDispatch();
 
@@ -60,64 +55,60 @@ console.log(favorites);
 
 const searchedData = countries.filter((searchedItem)=>
 searchedItem.name.common.toLowerCase().includes(searchInput));
-
-  const allCountries =  searchedData?.map((data,index:number) => {
-   
+  
     return(
-      // <section >
-     
-<tr key={index}>
-    {/* <td>{index}</td> */}
-    <td><img src={data.flags.svg} alt='' style={{width:'40px'}} /></td>
-    <Link to={`/${data.name.official}`}>
-    <td>{data.name.official}</td>
-    </Link>
-        <td>{data.region}</td>
-    <td>{data.population.toLocaleString() }</td>
-    {/* <td>{data.languages}</td> */}
-    <td>
-{data.languages && <ul>
-           {(Object.values(data.languages)).map((language, index:number)=>
-          <li key={index}>{language}</li>
-          )}
-         </ul>}
-    </td>
-    <section style={{display:'flex', justifyContent:'space-between'}}>
-      <Link to='/' 
-        state={{theCountryName:data.name.official, theCountryRegion: data.region,
-    theCountryFlags:data.flags.svg, theCountryPopulation:data.population.toLocaleString() }}> 
-     <td><FaHeart onClick={()=>handleAddToFavorites(data) }
-      style={{ color: favorites.includes(data) ? 'green': '#0d6efd'}}
-      /></td>
-    </Link>
-       <Link to={data.name.official} state={data.name.official}> 
-     <td><FaAngleRight /></td>
-        </Link>
-    </section>
-   </tr>
-      // </section>
-     )
-  })
-  return (
-    <div>
-<ToastContainer />
-       <table style={{width:'90vw', marginLeft:'1rem'}}>
-            <thead>
-              <tr  >             
-                 <th style={{paddingRight:'2rem'}}>flags</th> 
-                 <th>name</th>
-                 <th>region</th>
-                 <th>population</th>
-                 <th>language</th>
-              </tr>
-            </thead>
-            <tbody>
-              {allCountries}
-            </tbody>
-          </table>
-    </div>
-    
-               )
-}
+     <div >
+       {isLoading && <Loading />}
+        <ToastContainer />
+            <Table striped bordered hover>
+         <thead>
+          <th>flag</th>
+          <th>name</th>
+           <th>region</th>
+           <th>population</th>
+           <th>language</th>
+           <th></th>
+           <th></th>
+                   </thead>
+         <tbody>
+           {searchedData?.map((data, index: number) => {
+             return <tr key={index}>
+               <td><img src={data.flags.svg} alt='' style={{ width: '40px' }} /></td>
+               {/* <td>{data.name.official}</td> */}
+              <td><Link style={{ textDecoration: 'none', color:'black' }} to={`/${data.name.official}`}>
+                    {data.name.official}
+                </Link>
+                </td>  
+              <td>{data.region}</td>
+              <td>{data.population.toLocaleString()}</td>
+              <td>{data.languages && <ul>
+                        {(Object.values(data.languages)).map((language, index: number) =>
+                            <li key={index}>{language}</li>
+                        )}
+                    </ul>}
+              </td>
+              <td> 
+                   <Link to='/'
+                        state={{
+                            theCountryName: data.name.official, theCountryRegion: data.region,
+                            theCountryFlags: data.flags.svg, theCountryPopulation: data.population.toLocaleString()
+                        }}>
+                        <FaHeart onClick={() => handleAddToFavorites(data)}
+                            style={{ color: favorites.includes(data) ? 'green' : '#0d6efd' }}
+                        />
+                    </Link>
+              </td>
+              <td>
+                  <Link to={data.name.official} state={data.name.official}>
+                  <FaAngleRight />
+                  </Link>
+              </td>
+             </tr>
+           })}
+         </tbody>
+       </Table>
+     </div> 
+    )
+  };
 
 export default Countries
