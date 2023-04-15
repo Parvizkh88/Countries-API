@@ -14,12 +14,13 @@ export interface CountryT {
 
    export interface CountriesState {
        countries:CountryT[]
-       favorites:CountryT []
+       favorites:CountryT[]
               countrySearched:CountryT[]
        searchInput:string
        isLoading:boolean
        isError: boolean
        message:string
+      //  favoriteCount: CountryT[]
           }
    export interface FavoritesState {
              favoriteCountries:CountryT[]

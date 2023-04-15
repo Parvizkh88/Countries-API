@@ -13,8 +13,8 @@ const initialState :CountriesState ={
      searchInput:'',
      isLoading:false,
        isError: false,
-       message:''
-}
+       message:'',
+       }
 
 const fetchCountries = createAsyncThunk( 'countries/fetchCountries',
  async () => {

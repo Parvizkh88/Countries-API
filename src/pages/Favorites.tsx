@@ -28,7 +28,9 @@ const Favorites = () => {
   // console.log(country);
 
    const {favorites} = useAppSelector((state)=> state.countriesR)
-  //  console.log(favorites);
+  //  let favoriteCount = favorites.length;
+  //  console.log(favoriteCount);
+   
    const renderFav= favorites?.map((data1,index:number) => {
       // const{common}=data.name 
      return(
