@@ -34,7 +34,7 @@ type CountriesProps = {
    }
 
 function Countries () {
-
+// const [isDarkMode, setIsDarkMode] = useState(false);
   const {countries, searchInput, favorites, isLoading} = useAppSelector((state)=> state.countriesR)
   // const [includedFavorites, setIncludedFavorites] = useState(favorites)
 
@@ -57,10 +57,13 @@ const searchedData = countries.filter((searchedItem)=>
 searchedItem.name.common.toLowerCase().includes(searchInput));
   
     return(
-     <div >
+     <div>
+        {/* <button onClick={() => setIsDarkMode(!isDarkMode)}>
+            {isDarkMode ? 'Light mode(c)' : 'Dark mode(c)'}
+          </button> */}
        {isLoading && <Loading />}
         <ToastContainer />
-            <Table striped bordered hover>
+            <Table bordered hover>
          <thead>
           <th>flag</th>
           <th>name</th>
@@ -75,10 +78,14 @@ searchedItem.name.common.toLowerCase().includes(searchInput));
              return <tr key={index}>
                <td><img src={data.flags.svg} alt='' style={{ width: '40px' }} /></td>
                {/* <td>{data.name.official}</td> */}
-              <td><Link style={{ textDecoration: 'none', color:'black' }} to={`/${data.name.official}`}>
+              <td><Link style={{ textDecoration: 'none', color:'black' }} 
+              to={`/${data.name.official}`}>
                     {data.name.official}
-                </Link>
-                </td>  
+                </Link></td>  
+              {/* <td><Link  className={isDarkMode ? 'dark' : 'light'} style={{ textDecoration: 'none', color:'black' }} 
+              to={`/${data.name.official}`}>
+                    {data.name.official}
+                </Link></td>   */}
               <td>{data.region}</td>
               <td>{data.population.toLocaleString()}</td>
               <td>{data.languages && <ul>

@@ -53,7 +53,7 @@ const Favorites = () => {
 
     return (
   <div> 
-    {renderFav}
+       {renderFav}
   </div>
   )
 }

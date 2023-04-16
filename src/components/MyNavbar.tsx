@@ -13,7 +13,9 @@ import SearchComponent from './SeachComponent';
 import { useAppSelector } from '../app/hooks';
 import { CountryT } from '../types/CountryTypes';
 
+
 const MyNavbar = () => {
+
    const {favorites} = useAppSelector((state)=> state.countriesR);
  let favoriteCount = favorites.length;
   //  console.log(favoriteCount);
@@ -26,14 +28,21 @@ const MyNavbar = () => {
         <Link to='/'> 
         <Navbar.Brand href="#"><BiWorld /></Navbar.Brand>
         </Link>
-              <Navbar.Brand href="#"><FaToggleOn /></Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
+        
           <Link to='/favorites'>
         <Navbar.Brand href="#"><FaHeart /></Navbar.Brand>
         </Link>
-        <p style={{marginLeft:"-10px", marginBottom:"-18px", 
+        <p style={{marginLeft:"-15px", marginRight:'10px', marginBottom:"-18px", 
         fontWeight:"bold", fontSize:"15px"}}>{favoriteCount}</p>
-        <Navbar.Collapse id="navbarScroll">
+        <Navbar.Brand href="#"><FaToggleOn /></Navbar.Brand>
+        {/* <Navbar.Toggle aria-controls="navbarScroll" /> */}
+        <Form>
+        <Form.Check
+        type="switch"
+        id="custom-switch"
+               />
+        </Form>
+           <Navbar.Collapse id="navbarScroll">
           <Nav
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: '100px' }}
