@@ -28,6 +28,7 @@ const Favorites = () => {
   // console.log(country);
 
    const {favorites} = useAppSelector((state)=> state.countriesR)
+   const isDarkMode = useAppSelector((state) => state.isDarkMode);
   //  let favoriteCount = favorites.length;
   //  console.log(favoriteCount);
    
@@ -52,13 +53,8 @@ const Favorites = () => {
   })
 
     return (
-  <div> 
-       {renderFav}
-  </div>
+ <div className={isDarkMode ? 'dark-mode' : ''}>{renderFav}</div>
   )
 }
 
 export default Favorites
-
-// {/* <button onClick={() => dispatch(addToFavorate(data))}>favourite </button> */}
-
