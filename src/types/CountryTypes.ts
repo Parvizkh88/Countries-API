@@ -25,3 +25,4 @@ export interface CountryT {
    export interface FavoritesState {
              favoriteCountries:CountryT[]
    }
+

@@ -1,13 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import countriesReducer from '../redux/countries/countriesSlice'
+// import favoritesReducer from '../redux/countries/favoriteSlice'
 
 export const store = configureStore({
   reducer: {
-    
-    countriesR: countriesReducer,
-  },
-  preloadedState: {
-    isDarkMode: false as boolean,
+    countriesR:countriesReducer,
+    // favoritesR: favoritesReducer,
   },
 })
 

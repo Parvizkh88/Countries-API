@@ -28,7 +28,6 @@ const Favorites = () => {
   // console.log(country);
 
    const {favorites} = useAppSelector((state)=> state.countriesR)
-   const isDarkMode = useAppSelector((state) => state.isDarkMode);
   //  let favoriteCount = favorites.length;
   //  console.log(favoriteCount);
    
@@ -53,7 +52,9 @@ const Favorites = () => {
   })
 
     return (
- <div className={isDarkMode ? 'dark-mode' : ''}>{renderFav}</div>
+  <div> 
+       {renderFav}
+  </div>
   )
 }
 
