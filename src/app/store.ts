@@ -1,19 +1,17 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
-import countriesReducer from '../redux/countries/countriesSlice'
-// import favoritesReducer from '../redux/countries/favoriteSlice'
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import countriesReducer from "../redux/countries/countriesSlice";
 
 export const store = configureStore({
   reducer: {
-    countriesR:countriesReducer,
-    // favoritesR: favoritesReducer,
+    countriesR: countriesReducer,
   },
-})
+});
 
-export type AppDispatch = typeof store.dispatch
-export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,
   unknown,
   Action<string>
->
+>;

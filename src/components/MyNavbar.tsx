@@ -12,6 +12,7 @@ import { BiFontSize, BiWorld } from "react-icons/bi";
 import SearchComponent from "./SeachComponent";
 import { useAppSelector } from "../app/hooks";
 import { CountryT } from "../types/CountryTypes";
+import { fontWeight } from "@mui/system";
 
 interface MyNavbarProps {
   isDarkMode: boolean;
@@ -22,9 +23,8 @@ const MyNavbar: React.FC<MyNavbarProps> = ({ isDarkMode, setIsDarkMode }) => {
   const { favorites } = useAppSelector((state) => state.countriesR);
   let favoriteCount = favorites.length;
 
-  //  console.log(favoriteCount);
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar className="navbar" expand="lg">
       <Container fluid>
         <Link to="/">
           <Navbar.Brand href="#">
@@ -36,7 +36,6 @@ const MyNavbar: React.FC<MyNavbarProps> = ({ isDarkMode, setIsDarkMode }) => {
             <BiWorld />
           </Navbar.Brand>
         </Link>
-
         <Link to="/favorites">
           <Navbar.Brand href="#">
             <FaHeart />
@@ -54,12 +53,9 @@ const MyNavbar: React.FC<MyNavbarProps> = ({ isDarkMode, setIsDarkMode }) => {
         >
           {favoriteCount}
         </p>
-        {/* <Navbar.Toggle aria-controls="navbarScroll" /> */}
-        {/* <Form>
-          <Form.Check type="switch" id="custom-switch" />
-        </Form> */}
         <Form>
           <Form.Check
+            style={{ marginTop: "0.5rem", fontWeight: "bold" }}
             type="switch"
             id="custom-switch"
             label="Dark mode"

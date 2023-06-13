@@ -5,13 +5,11 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../app/hooks";
 import { CountryT } from "../types/CountryTypes";
-// import {CountriesState} from '../types/CountryTypes'
 
 const Favorites = () => {
   type CountriesProps = {
     countries: CountryT[];
     data1: CountryT[];
-    //  favorites:CountryT []
     readonly flags: { png: string; svg: string };
     readonly languages: { [key: string]: string };
     readonly name: {
@@ -22,16 +20,9 @@ const Favorites = () => {
     readonly region: string;
   };
 
-  // const country = useLocation();
-  // const [state, setState] = useState(country);
-  // console.log(country);
-
   const { favorites } = useAppSelector((state) => state.countriesR);
-  //  let favoriteCount = favorites.length;
-  //  console.log(favoriteCount);
 
   const renderFav = favorites?.map((data1, index: number) => {
-    // const{common}=data.name
     return (
       <Card style={{ width: "18rem", marginLeft: "35rem", marginTop: "10rem" }}>
         <Card.Img variant="top" src={data1.flags.svg} />
@@ -51,7 +42,6 @@ const Favorites = () => {
       </Card>
     );
   });
-
   return <div>{renderFav}</div>;
 };
 

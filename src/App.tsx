@@ -24,15 +24,6 @@ function App() {
     <div className={isDarkMode ? "dark-mode" : ""}>
       <BrowserRouter>
         <MyNavbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-        {/* <Form>
-          <Form.Check
-            type="switch"
-            id="custom-switch"
-            label="Dark mode"
-            checked={isDarkMode}
-            onChange={() => setIsDarkMode(!isDarkMode)}
-          />
-        </Form> */}
         <Routes>
           <Route path="/" element={<Countries />} />
           <Route path="/:name" element={<Detail />} />

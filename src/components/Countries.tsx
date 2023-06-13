@@ -7,20 +7,15 @@ import { FaHeart } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
 import Table from "react-bootstrap/Table";
 
-import { useState, useEffect } from "react";
-
-import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { CountryT } from "../types/CountryTypes";
-import Country from "./Country";
-//  import { addToFavorites } from '../redux/countries/favoriteSlice';
+
 import {
   addToFavorites,
   removeFromFavorites,
 } from "../redux/countries/countriesSlice";
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
-// import { v4 as uuidv4 } from 'uuid'
 
 type CountriesProps = {
   countries: CountryT[];
@@ -36,14 +31,9 @@ type CountriesProps = {
 };
 
 function Countries() {
-  // const [isDarkMode, setIsDarkMode] = useState(false);
   const { countries, searchInput, favorites, isLoading } = useAppSelector(
     (state) => state.countriesR
   );
-  // const [includedFavorites, setIncludedFavorites] = useState(favorites)
-
-  // console.log(favorites);
-  // console.log(isLoading);
 
   const dispatch = useAppDispatch();
 
@@ -63,9 +53,6 @@ function Countries() {
 
   return (
     <div>
-      {/* <button onClick={() => setIsDarkMode(!isDarkMode)}>
-            {isDarkMode ? 'Light mode(c)' : 'Dark mode(c)'}
-          </button> */}
       {isLoading && <Loading />}
       <ToastContainer />
       <Table bordered hover className="custom-table">
@@ -85,16 +72,11 @@ function Countries() {
                 <td>
                   <img src={data.flags.svg} alt="" style={{ width: "40px" }} />
                 </td>
-                {/* <td>{data.name.official}</td> */}
                 <td>
                   <Link className="custom-table" to={`/${data.name.official}`}>
                     {data.name.official}
                   </Link>
                 </td>
-                {/* <td><Link  className={isDarkMode ? 'dark' : 'light'} style={{ textDecoration: 'none', color:'black' }} 
-              to={`/${data.name.official}`}>
-                    {data.name.official}
-                </Link></td>   */}
                 <td>{data.region}</td>
                 <td>{data.population.toLocaleString()}</td>
                 <td>
